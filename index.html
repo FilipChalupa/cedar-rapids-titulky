@@ -9,11 +9,16 @@
 				background-color: black;
 				color: white;
 				font-family: Arial, Helvetica, sans-serif;
+				text-align: center;
+			}
+			#main {
 				display: flex;
 				gap: 1.5em;
 				align-items: center;
+				text-align: left;
 				font-size: 2rem;
 				white-space: nowrap;
+				width: max-content;
 			}
 			.sponsors {
 				height: 2.5em;
@@ -29,76 +34,99 @@
 			.label {
 				font-size: 0.8em;
 			}
+			#export {
+				margin-top: 1em;
+				font-size: 3em;
+			}
 		</style>
 	</head>
 	<body>
-		<img src="sponsors.png" class="sponsors" />
-		<div class="label">
-			Námět, scénář, obrazy, multimediální vizualizace<br />
-			Concept, script, pictures, multimedia visualization
+		<div id="main">
+			<img src="sponsors.png" class="sponsors" />
+			<div class="label">
+				Námět, scénář, obrazy, multimediální vizualizace<br />
+				Concept, script, pictures, multimedia visualization
+			</div>
+			<div class="name">Zdeňka Čechová</div>
+			<div class="dot">•</div>
+			<div class="label">
+				Hudba<br />
+				Music
+			</div>
+
+			<div class="name">Miroslav Vobořil</div>
+
+			<div class="dot">•</div>
+
+			<div class="label">
+				Hrají<br />
+				Cast
+			</div>
+
+			<div class="name">Pavel Lehejček, Václav Havlíček, Miloš Klíma</div>
+
+			<div class="dot">•</div>
+
+			<div class="label">
+				Kamera<br />
+				Camera
+			</div>
+
+			<div class="name">Martin Bernas</div>
+
+			<div class="dot">•</div>
+
+			<div class="label">
+				Technická spolupráce a realizace se studenty FEL a FIT ČVUT v Praze pod
+				vedením autorky<br />
+				Technical co-operation and realization with students of the CTU at
+				Prague under supervision of the author
+			</div>
+
+			<div class="name">Zdeňka Čechová</div>
+
+			<div class="dot">•</div>
+
+			<div class="label">
+				Technická spolupráce<br />
+				Technical co-operation
+			</div>
+
+			<div class="name">Filip Chalupa</div>
+			<div class="dot">•</div>
+
+			<div class="label">
+				Projekce<br />
+				Projection
+			</div>
+
+			<div class="name">Jaromír Landsman</div>
+
+			<div class="dot">•</div>
+
+			<div class="label">
+				Režie<br />
+				Direction
+			</div>
+
+			<div class="name">Zdeňka Čechová</div>
 		</div>
-		<div class="name">Zdeňka Čechová</div>
-		<div class="dot">•</div>
-		<div class="label">
-			Hudba<br />
-			Music
-		</div>
+		<button type="button" id="export">Export</button>
+		<script src="https://unpkg.com/html-to-image@1.11.11/dist/html-to-image.js"></script>
+		<script>
+			console.log(htmlToImage)
+			const main = document.getElementById('main')
+			const exportButton = document.getElementById('export')
 
-		<div class="name">Miroslav Vobořil</div>
-
-		<div class="dot">•</div>
-
-		<div class="label">
-			Hrají<br />
-			Cast
-		</div>
-
-		<div class="name">Pavel Lehejček, Václav Havlíček, Miloš Klíma</div>
-
-		<div class="dot">•</div>
-
-		<div class="label">
-			Kamera<br />
-			Camera
-		</div>
-
-		<div class="name">Martin Bernas</div>
-
-		<div class="dot">•</div>
-
-		<div class="label">
-			Technická spolupráce a realizace se studenty FEL a FIT ČVUT v Praze pod
-			vedením autorky<br />
-			Technical co-operation and realization with students of the CTU at Prague
-			under supervision of the author
-		</div>
-
-		<div class="name">Zdeňka Čechová</div>
-
-		<div class="dot">•</div>
-
-		<div class="label">
-			Technická spolupráce<br />
-			Technical co-operation
-		</div>
-
-		<div class="name">Filip Chalupa</div>
-		<div class="dot">•</div>
-
-		<div class="label">
-			Projekce<br />
-			Projection
-		</div>
-
-		<div class="name">Jaromír Landsman</div>
-
-		<div class="dot">•</div>
-
-		<div class="label">
-			Režie<br />
-			Direction
-		</div>
-
-		<div class="name">Zdeňka Čechová</div>
+			exportButton.addEventListener('click', () => {
+				htmlToImage.toPng(main).then(async (dataUrl) => {
+					const link = document.createElement('a')
+					link.download = 'titulky.png'
+					link.href = dataUrl
+					link.target = '_blank'
+					link.click()
+				})
+			})
+		</script>
 	</body>
 </html>
