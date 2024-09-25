@@ -25,6 +25,12 @@
 				margin-right: 2em;
 				border: 0.3em solid #ffffff;
 			}
+			*:not(.sponsor) + .sponsor {
+				margin-left: 2em;
+			}
+			.sponsor:has(+ *:not(.sponsor)) {
+				margin-right: 5em;
+			}
 			.dot {
 				font-size: 5em;
 			}
@@ -49,6 +55,7 @@
 	</head>
 	<body>
 		<div id="main">
+			<div class="label">Děkujeme generálním sponzorům</div>
 			<img src="images/1.png" class="sponsor" />
 			<img src="images/2.png" class="sponsor" />
 			<img src="images/3.png" class="sponsor" />
