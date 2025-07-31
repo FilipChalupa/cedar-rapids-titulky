@@ -1,115 +1,128 @@
 <!DOCTYPE html>
 <html lang="cs">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Titulky</title>
-		<style>
-			body {
-				background-color: black;
-				color: white;
-				font-family: Arial, Helvetica, sans-serif;
-				width: max-content;
-			}
-			#main {
-				display: flex;
-				gap: 1.5em;
-				align-items: center;
-				text-align: left;
-				font-size: 2rem;
-				white-space: nowrap;
-				width: max-content;
-			}
-			.sponsor {
-				height: 2em;
-				margin-right: 2em;
-				border: 0.3em solid #ffffff;
-			}
-			*:not(.sponsor) + .sponsor {
-				margin-left: 2em;
-			}
-			.sponsor:has(+ *:not(.sponsor)) {
-				margin-right: 5em;
-			}
-			.dot {
-				font-size: 5em;
-			}
-			.name {
-				text-transform: uppercase;
-				font-size: 3rem;
-			}
-			.label {
-				font-size: 2rem;
-			}
-			.text {
-				font-size: 2.5rem;
-			}
-			.export {
-				position: sticky;
-				left: 1rem;
-				max-width: 100vw;
-				text-align: center;
-			}
-			#exportButton {
-				margin-top: 1em;
-				font-size: 3em;
-			}
-			.music_main {
-				text-transform: uppercase;
-			}
-			.inlineName {
-				text-transform: uppercase;
-			}
-		</style>
-	</head>
-	<body>
-		<div id="main">
-			<div class="label">
-				Festive video mapping for the 50th anniversary of <span class="inlineName">the National Czech & Slovak Museum & Library</span>,
-				celebrating the legacy of Czech composers <span class="inlineName">Antonín Dvořák</span> on his 120th
-				anniversary and <span class="inlineName">Bedřich Smetana</span> on his 200th anniversary
-			</div>
-			<div class="dot">•</div>
-			<div class="label">Author</div>
-			<div class="name">Zdeňka Čechová</div>
-			<div class="dot">•</div>
-			<div class="label">Music</div>
-			<div class="name">Antonín Dvořák</div>
-			<div class="music"><span class="music_main">Largo</span> from Symphony From the New World</div>
-			<div class="music"><span class="music_main">Polonaise</span> in E-flat major, B 100</div>
-			<div class="dot">•</div>
-			<div class="label">Dance</div>
-			<div class="text">Students from <span class="inlineName">Prague Dance Conservatory</span></div>
-			<div class="dot">•</div>
-			<div class="label">Technical cooperation</div>
-			<div class="text">
-				Students from FIT CTU in Prague under the guidance of the author
-			</div>
-			<div class="dot">•</div>
-			<div class="label">3D effects</div>
-			<div class="name">Lukáš Chalupa</div>
-			<div class="dot">•</div>
-			<div class="label">Technical cooperation and completion</div>
-			<div class="name">Filip Chalupa</div>
-		</div>
-		<div class="export">
-			<button type="button" id="exportButton">Export</button>
-		</div>
-		<script src="https://unpkg.com/html-to-image@1.11.11/dist/html-to-image.js"></script>
-		<script>
-			console.log(htmlToImage)
-			const main = document.getElementById('main')
-			const exportButton = document.getElementById('exportButton')
 
-			exportButton.addEventListener('click', () => {
-				htmlToImage.toPng(main).then(async (dataUrl) => {
-					const link = document.createElement('a')
-					link.download = 'titulky.png'
-					link.href = dataUrl
-					link.target = '_blank'
-					link.click()
-				})
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Titulky</title>
+	<style>
+		body {
+			background-color: black;
+			color: white;
+			font-family: Arial, Helvetica, sans-serif;
+			width: max-content;
+		}
+
+		#main {
+			display: flex;
+			gap: 1.5em;
+			align-items: center;
+			text-align: left;
+			font-size: 2rem;
+			white-space: nowrap;
+			width: max-content;
+		}
+
+		.sponsor {
+			height: 2em;
+			margin-right: 2em;
+			border: 0.3em solid #ffffff;
+		}
+
+		*:not(.sponsor)+.sponsor {
+			margin-left: 2em;
+		}
+
+		.sponsor:has(+ *:not(.sponsor)) {
+			margin-right: 5em;
+		}
+
+		.dot {
+			font-size: 5em;
+		}
+
+		.name {
+			text-transform: uppercase;
+			font-size: 3rem;
+		}
+
+		.label {
+			font-size: 2rem;
+		}
+
+		.text {
+			font-size: 2.5rem;
+		}
+
+		.export {
+			position: sticky;
+			left: 1rem;
+			max-width: 100vw;
+			text-align: center;
+		}
+
+		#exportButton {
+			margin-top: 1em;
+			font-size: 3em;
+		}
+
+		.inlineName {
+			text-transform: uppercase;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="main">
+		<div class="label">
+			Festive video mapping for the 50th anniversary of the <span class="inlineName">National Czech & Slovak Museum &
+				Library</span> and celebration of the anniversary of Czech composers <span class="inlineName">Antonín
+				Dvořák</span> on his 120th
+			anniversary and <span class="inlineName">Bedřich Smetana</span> on his 200th anniversary
+		</div>
+		<div class="dot">•</div>
+		<div class="label">Author</div>
+		<div class="name">Zdeňka Čechová</div>
+		<div class="dot">•</div>
+		<div class="label">Music</div>
+		<div class="name">Antonín Dvořák</div>
+		<div class="music"><span class="inlineName">Largo</span> from <span class="inlineName">Symphony From the New
+				World</span></div>
+		<div class="music"><span class="inlineName">Polonaise</span> in E-flat major, B 100</div>
+		<div class="dot">•</div>
+		<div class="label">Dance</div>
+		<div class="text">Students from <span class="inlineName">Prague Dance Conservatory</span></div>
+		<div class="dot">•</div>
+		<div class="label">Technical cooperation</div>
+		<div class="text">
+			Students from FIT CTU in Prague under the guidance of the author
+		</div>
+		<div class="dot">•</div>
+		<div class="label">3D effects</div>
+		<div class="name">Lukáš Chalupa</div>
+		<div class="dot">•</div>
+		<div class="label">Technical cooperation and completion</div>
+		<div class="name">Filip Chalupa</div>
+	</div>
+	<div class="export">
+		<button type="button" id="exportButton">Export</button>
+	</div>
+	<script src="https://unpkg.com/html-to-image@1.11.11/dist/html-to-image.js"></script>
+	<script>
+		console.log(htmlToImage)
+		const main = document.getElementById('main')
+		const exportButton = document.getElementById('exportButton')
+
+		exportButton.addEventListener('click', () => {
+			htmlToImage.toPng(main).then(async (dataUrl) => {
+				const link = document.createElement('a')
+				link.download = 'titulky.png'
+				link.href = dataUrl
+				link.target = '_blank'
+				link.click()
 			})
-		</script>
-	</body>
+		})
+	</script>
+</body>
+
 </html>
